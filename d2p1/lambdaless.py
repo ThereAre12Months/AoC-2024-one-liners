@@ -1,0 +1,1 @@
+with open("input.txt")as f:print(sum([(all([(report[i]-report[i+1])in[1,2,3]for i in range(len(report)-1)])or all([(report[i+1]-report[i])in[1,2,3]for i in range(len(report)-1)]))for report in [[int(b)for b in a.split()] for a in f.read().splitlines()]]))

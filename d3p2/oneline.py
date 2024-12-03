@@ -1,0 +1,3 @@
+# in this one I cheated a bit, I chained multiple statements in a tuple, and used a walrus operator to keep track of the enabled state
+# I'm also to lazy to create a lambdaless version, so deal with it
+with open("input.txt")as f:print((lambda data,enabled=True:sum([sum([((enabled:=True,0)[1]if data[i:j]=="do()"else((enabled:=False,0)[1]if data[i:j]=="don't()"else(0 if not(enabled and all([(char in "mul(),1234567890")for char in data[i:j]])and(data[i:j].count(",")==1)and(data[i:j].count("(")==1)and(data[i:j].count(")")==1)and(data[i:j].startswith("mul("))and(data[i:j].endswith(")")))else int.__mul__(*list(map(int,data[i+4:j-1].split(",")))))))for j in range(i,min(len(data),i+15))])for i in range(len(data)-15)]))(f.read()))
